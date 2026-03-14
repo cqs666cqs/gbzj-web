@@ -1,155 +1,756 @@
 <!DOCTYPE html>
-<!-- saved from url=(0023)https://gbzj.pages.dev/ -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>高博之基简介</title>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>高博之基 · 益炎帝国 · 官方主页</title>
+    <!-- 思源宋体 & 无衬线字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (免费) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
-            background-color: #f5f7fa;
-            font-family: 'kaiti';
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .part {
-            background-color: white;
-            margin: auto;
-            color: #000000;
-            text-align: center;
-            width: 80%;
-            padding: 6px;
-        }
-        .name {
-            color: #000000;
-            text-align: center;
-            background-color: #ffffff;
-            font-size: larger;
 
+        body {
+            background-color: #0a0c0f;
+            color: #eaeaea;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
-        .little_title {
-            color: #000000;
-            text-align: center;
-            background-color: #ffffff;
+
+        h1, h2, h3, .chinese-serif {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
         }
-        .text {
-            background-color: #ffffff;
-            text-align: left;
-            font-size: 1.5em;
-        }
-        .photos {
-            width: 60%;
-            height: 20%;
-            display: block;
+
+        .container {
+            max-width: 1280px;
             margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* 装饰用金色 */
+        .gold-text {
+            color: #b89b5b;
+        }
+        .gold-border {
+            border-color: #b89b5b;
+        }
+        .btn-gold {
+            background: transparent;
+            border: 2px solid #b89b5b;
+            color: #b89b5b;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-gold:hover {
+            background: #b89b5b;
+            color: #0a0c0f;
+        }
+        .btn-solid {
+            background: #b89b5b;
+            border: 2px solid #b89b5b;
+            color: #0a0c0f;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-solid:hover {
+            background: transparent;
+            color: #b89b5b;
+        }
+
+        /* 导航 */
+        .navbar {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(184, 155, 91, 0.3);
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 12, 15, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            color: #eaeaea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #b89b5b;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 102;
+        }
+
+        /* 移动端菜单 (全屏覆盖) */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 12, 15, 0.98);
+            backdrop-filter: blur(8px);
+            z-index: 101;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s;
+            pointer-events: none;
+        }
+        .mobile-nav.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .mobile-nav a {
+            color: #eaeaea;
+            font-size: 2.2rem;
+            font-family: 'Noto Serif SC', serif;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .mobile-nav a:hover {
+            color: #b89b5b;
+        }
+        .mobile-nav .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            color: #b89b5b;
+            cursor: pointer;
+        }
+
+        /* 英雄区 */
+        .hero {
+            padding: 6rem 0 4rem;
+            background: radial-gradient(circle at 30% 30%, rgba(30, 25, 20, 0.8), #0a0c0f 70%);
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            text-shadow: 0 0 15px rgba(184,155,91,0.3);
+            margin-bottom: 1rem;
+        }
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: #b89b5b;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            max-width: 700px;
+            margin: 2rem auto;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* 故事区 */
+        .section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            text-align: center;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .story-text {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        .story-text p {
+            margin-bottom: 1.2rem;
+        }
+        .story-highlight {
+            background: rgba(184, 155, 91, 0.1);
+            padding: 2rem;
+            border-left: 4px solid #b89b5b;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        /* 特色卡片 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            background: rgba(20, 22, 27, 0.7);
+            border: 1px solid #2a2a2a;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .feature-card:hover {
+            border-color: #b89b5b;
+            transform: translateY(-8px);
+        }
+        .feature-icon {
+            font-size: 2.8rem;
+            color: #b89b5b;
+            margin-bottom: 1.2rem;
+        }
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        .feature-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        /* 角色 */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .character-card {
+            background: rgba(15, 17, 22, 0.8);
+            border: 1px solid #2f2f2f;
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+        }
+        .character-avatar {
+            height: 240px;
+            background: #1e2128;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #b89b5b;
+            border-bottom: 2px solid #b89b5b;
+            overflow: hidden;
+        }
+        .character-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        .character-info {
+            padding: 1.8rem;
+        }
+        .character-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .character-title {
+            color: #b89b5b;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+        .character-quote {
+            color: #bbb;
+            font-style: italic;
+            border-top: 1px dashed #444;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* 截图区域 (使用真实图片) */
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .screenshot {
+            background: #23262e;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5a5f6b;
+            font-size: 1rem;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        .screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .screenshot:hover {
+            border-color: #b89b5b;
+        }
+
+        /* 下载区 (仅保留用户指定的四个链接) */
+        .download-section {
+            background: linear-gradient(145deg, #0f1219, #0a0c0f);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            margin: 3rem 0;
+        }
+        .download-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        /* 下载链接组 (part) 现在作为主要下载区 */
+        .part {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
         }
         .download {
-            color: yellowgreen;
-            background-color: #ffffff;
-            font-size: 20px;
+            background: transparent;
+            border: 2px solid #b89b5b;
+            color: #b89b5b;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
             display: inline-block;
-            margin: 10px;
-            padding: 10px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            min-width: 160px;
+        }
+        .download:hover {
+            background: #b89b5b;
+            color: #0a0c0f;
+        }
+
+        /* 反馈 & 开发者名单样式 (新增) */
+        .feedback-container {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 24px;
+            border: 1px solid #2a2a2a;
+        }
+        .feedback-container .part {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .feedback-container .part:first-child {
+            margin-top: 0;
+        }
+        .text {
+            font-size: 1.1rem;
+            color: #ccc;
+            text-align: center;
+            word-break: break-word;
         }
         .upload {
-            color: red;
-            background-color: #ffffff;
-            font-size: 20px;
-            display: inline-block;
-            margin: 10px;
-            padding: 10px;
+            color: #b89b5b;
+            text-decoration: none;
+            border-bottom: 1px dotted #b89b5b;
         }
-        </style>
+        .upload:hover {
+            color: #e4c27a;
+        }
+        .feedback-container img {
+            width: 20%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
+            border-radius: 12px;
+            border: 2px solid #b89b5b;
+        }
+        .little_title {
+            font-size: 2rem;
+            color: #b89b5b;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: #777;
+            border-top: 1px solid rgba(184,155,91,0.2);
+        }
+        footer a {
+            color: #b89b5b;
+            text-decoration: none;
+        }
+        .back-link {
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+            .screenshots {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 0 1.2rem;
+            }
+            .part {
+                flex-direction: column;
+                align-items: center;
+            }
+            .download {
+                width: 80%;
+                text-align: center;
+            }
+            .feedback-container img {
+                width: 60%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div style="background-color: #ffffff;
-    width: 100%;">
-        <div class="part">
-            <a class="download" href="https://pan.baidu.com/s/1aSJIQ_OSFaKwxFJp1CVmJA?pwd=gbzj" target="_blank">
-                百度网盘下载</a>
-            <a class="download" href="https://www.123865.com/s/ijYBvd-IHfHd" target="_blank">
-                123云盘下载</a>
-            <a class="download" href="https://40code.com/#page=work&amp;id=16020" target="_blank">
-                快捷游玩</a>
-            <!-- 新增更新日志链接 -->
-            <a class="download" href="gxrz.html">更新日志</a>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo gold-text">高博之基</div>
+            <div class="nav-links">
+                <a href="#story">故事</a>
+                <a href="#features">特色</a>
+                <a href="#characters">角色</a>
+                <a href="#download">下载</a>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
-    </div>
-    <h1 style="color: #000000;text-align: center;">高博之基</h1>
-    <div style="background-color: #ffffff;
-    margin: auto;
-    width: 60%;
-    padding: 10px">
-        <h2 class="little_title">游戏简介</h2>
-        <div class="part">
-            <p class="text">
-                益炎帝国波谲云诡、危机四伏的官场，奸计圈套充斥其间。
-            </p>
-            <p class="text">
-                这里是炎太祖统治、忠臣与奸人并存的帝国
-            </p>
-            <p class="text">
-                偌大的朝堂上，臣子奸佞立于堂下。
-            </p>
-            <p class="text">
-                你是一个忠于皇帝的大臣，从烟火人间而来。皇帝被奸臣谗言蒙蔽，而你因此被打入地牢，含冤入狱。
-            </p>
-            <p class="text">
-                再度醒来，你已身处地牢......
-            </p>
+        <!-- 移动端全屏菜单 -->
+        <div class="mobile-nav">
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <a href="#story" class="mobile-link">故事</a>
+            <a href="#features" class="mobile-link">特色</a>
+            <a href="#characters" class="mobile-link">角色</a>
+            <a href="#download" class="mobile-link">下载</a>
         </div>
-        <h2 class="little_title">剧情概要</h2>
-        <div class="part">
-            <p class="text">
-            益炎帝囯炎太祖苏益炎听信奸人刘逸川谗言，将忠臣刘高博打入地牢。
-            在冤魂潜伏，危机重重的监牢，刘高博需要灵活面对各种危机，逃出监牢，向陷害他的奸佞复仇，洗清自己的冤屈。
-            </p>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>高博之基<br><span style="font-size: 2rem; color: #aaa;">THE FOUNDATION OF GAOBO</span></h1>
+            <div class="hero-tagline">益炎帝国 · 剑与人 · 烽火再起</div>
+            <p>刘高博，一个被诬陷的忠臣，从地牢中觉醒。皇帝昏庸？奸臣当道？不，真正的传奇，由自己奠基。</p>
+            <div class="hero-buttons">
+                <a href="#story" class="btn-gold">了解史诗</a>
+                <a href="#download" class="btn-solid">下载游戏</a>
+            </div>
         </div>
-        <h2 class="little_title">人物介绍</h2>
-        <h6 class="name">剑人 刘高博</h6>
-        <div class="part">
-            <p class="text">
-            益炎帝囯忠臣，有一身不俗的剑术，为益炎帝国鞠躬尽瘁，却被奸人刘逸川陷害锒铛入狱。
-            对陷害自己的刘逸川恨之入骨，决心要向他复仇。
-            </p>
-            <img class="photos" src="刘高博.png">
+    </section>
+
+    <!-- 故事剧情（提炼自剧情内容列表） -->
+    <section id="story" class="section">
+        <div class="container">
+            <h2 class="section-title gold-text">📜 帝国余烬</h2>
+            <div class="section-sub">源自项目内长达百余条的剧情对话，还原一个充满背叛与忠义的益炎帝国</div>
+            <div class="story-grid">
+                <div class="story-text">
+                    <p>益炎历七年，功臣刘高博因功高震主，遭佞臣刘逸川诬陷谋反。皇帝炎太祖一怒之下将其打入死牢。地牢昏暗，莫翼豪奉命看守：“刘高博，你被捕了！”</p>
+                    <p>然而刘高博越狱而出，正撞见刘逸川逼宫、炎太祖装死……危急时刻，他揭穿阴谋，与皇帝联手反杀叛逆。但故事才刚刚开始——寻找海神之泪，邂逅海洋之子易同海；深入山村，助吴安龙驯服黑龙“玄影”；宰相黄睿成献计，潜入海盗巢穴，面对贪婪的潘长海……</p>
+                    <p>从朝堂至深海，从单剑匹马到伙伴并肩。每一次选择，都在为“高博之基”添砖加瓦。</p>
+                </div>
+                <div class="story-highlight">
+                    <i class="fas fa-quote-left" style="color: #b89b5b; margin-right: 0.5rem;"></i> 
+                    刘高博：我为益炎帝国做了那么多事，你竟想把我贬为高玩刺史？<br>
+                    炎太祖：朕欲给你找个轻松点的职位，罢了，那便给你一个太监的职位吧。<br>
+                    刘逸川：陛下，他有谋反之意！<br>
+                    <i class="fas fa-quote-right" style="color: #b89b5b; margin-left: 0.5rem;"></i>
+                    <div style="margin-top: 1rem;">—— 节选自游戏内剧情·第一幕</div>
+                </div>
+            </div>
         </div>
-        <h6 class="name">刘逸川</h6>
-        <div class="part">
-            <p class="text">
-            卑鄙小人，诡计多端，心狠手辣，向炎太祖进谏谗言，害忠臣刘高博被打入地牢。
-            </p>
-            <img class="photos" src="刘逸川.png">
+    </section>
+
+    <!-- 特色（根据代码变量提炼） -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title gold-text">⚔️ 战魂·拟器·连击</h2>
+            <div class="section-sub">深度定制战斗系统，从爆率爆伤到冷却管理，一切皆可成长</div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-crosshairs"></i></div>
+                    <h3 class="feature-title">战技 & 终结技</h3>
+                    <p class="feature-desc">普攻、战技、终结技独立冷却。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-dragon"></i></div>
+                    <h3 class="feature-title">拟器系统</h3>
+                    <p class="feature-desc">“剑人合一”、“世界将倾”……拟器提供额外加成，通过卡池或宝箱获取，叠加上不封顶。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="feature-title">爆率 · 爆伤 · 成长</h3>
+                    <p class="feature-desc">每位角色拥有独立爆率、爆伤数值。战斗中随机触发暴击，更可临时提升爆伤，瞬间逆转战局。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-map"></i></div>
+                    <h3 class="feature-title">多地图探索</h3>
+                    <p class="feature-desc">从益炎皇城到东海之滨，从海盗船到神秘地牢，通过切换地图触发不同剧情与战斗。</p>
+                </div>
+            </div>
         </div>
-        <h6 class="name">炎太祖 苏益炎</h6>
-        <div class="part">
-            <p class="text">
-            益炎帝国现任皇帝，听信奸人刘逸川谗言，将忠臣刘高博打入地牢。
-            </p>
-            <img class="photos" src="炎太祖.png">
+    </section>
+
+    <!-- 角色介绍（依据剧情及变量命名，已替换刘高博和炎太祖头像） -->
+    <section id="characters" class="section">
+        <div class="container">
+            <h2 class="section-title gold-text">👥 主要角色</h2>
+            <div class="section-sub">帝国兴衰，尽在人物之间</div>
+            <div class="characters-grid">
+                <!-- 刘高博 (头像替换为 刘高博.png) -->
+                <div class="character-card">
+                    <div class="character-avatar">
+                        <img src="刘高博立绘.png" alt="刘高博">
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">刘高博</div>
+                        <div class="character-title">剑人 · 主角</div>
+                    
+                        <div class="character-quote">“就你，能挡住我？”</div>
+                    </div>
+                </div>
+                <!-- 炎太祖 (头像替换为 炎太祖.png) -->
+                <div class="character-card">
+                    <div class="character-avatar">
+                        <img src="炎太祖立绘.png" alt="炎太祖">
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">苏益炎</div>
+                        <div class="character-title">炎太祖</div>
+                        <div>“朕何时说过要抢你宝物？朕只是让刘高博去借来看看。”</div>
+                        <div class="character-quote">“接朕这么多招，你已经很强了！”</div>
+                    </div>
+                </div>
+                <!-- 易同海 (保留图标) -->
+                <div class="character-card">
+                    <div class="character-avatar"><i class="fas fa-water"></i></div>
+                    <div class="character-info">
+                        <div class="character-name">易同海</div>
+                        <div class="character-title">海洋之子 · 镇海大将军</div>
+                        <div>海神之泪守护者，后被炎太祖招安，与刘高博成为同僚。</div>
+                        <div class="character-quote">“一般般ji”</div>
+                    </div>
+                </div>
+                <!-- 吴安龙 & 玄影 (保留图标) -->
+                <div class="character-card">
+                    <div class="character-avatar"><i class="fas fa-crow"></i></div>
+                    <div class="character-info">
+                        <div class="character-name">吴安龙</div>
+                        <div class="character-title">驭龙者 · 玄影伙伴</div>
+                        <div>父亲遗物中藏有黑龙意志，获得黑龙认可，并肩作战。</div>
+                        <div class="character-quote">“谢谢你，玄影。”</div>
+                    </div>
+                </div>
+                <!-- 黄睿成 (保留图标) -->
+                <div class="character-card">
+                    <div class="character-avatar"><i class="fas fa-music"></i></div>
+                    <div class="character-info">
+                        <div class="character-name">黄睿成</div>
+                        <div class="character-title">宰相 · 歌声辅助</div>
+                        <div>“我的歌声能让敌人攻击力大减，到时候我给你打辅助！”</div>
+                        <div class="character-quote">“比天塌了还严重！陛下被海盗伤了……”</div>
+                    </div>
+                </div>
+                <!-- 潘长海 (反派，保留图标) -->
+                <div class="character-card">
+                    <div class="character-avatar"><i class="fas fa-skull"></i></div>
+                    <div class="character-info">
+                        <div class="character-name">嫖娼皇</div>
+                        <div class="character-title">南海海盗首领</div>
+                        <div>极度贪婪，坐着电动车……最终被刘高博一剑击飞。</div>
+                        <div class="character-quote">“啊！！！……飞走了。”</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div style="width: 100%;
-        height: 100px;
-        background-color: #f5f7fa;">
-    </div>
-    <div style="background-color: #ffffff;
-    width: 100%;">
-        <div class="part">
-            <p class="text">反馈网址(请用手机打开)：
-            <a class="upload" href="https://tjzssl.tsxcx.xyz/?tsd=698fd574e5659700011e28ea&amp;tsid=57485667&amp;tsuid=50431965" target="_blank">
-                https://tjzssl.tsxcx.xyz/?tsd=698fd574e5659700011e28ea&amp;tsid=57485667&amp;tsuid=50431965
-            </a>
-            <img src="反馈.jpg" style="width: 20%; 
-            height: 20%; 
-            display: block; 
-            margin: 0 auto;">
-            </p>
-            <p class="text">反馈邮箱：C20100605@outlook.com</p>
+    </section>
+
+    <!-- 游戏内截图 (使用真实图片1.png, 2.png，第三个保留占位) -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title gold-text">🎮 游戏瞬间</h2>
+            <div class="section-sub">基于项目内实际场景还原</div>
+            <div class="screenshots">
+                <div class="screenshot"><img src="1.png" alt="游戏截图1"></div>
+                <div class="screenshot"><img src="2.png" alt="游戏截图2"></div>
+                <div class="screenshot"><img src="3.png" alt="游戏截图3"></div>
+            </div>
         </div>
-        <div class="part">
-            <h2 class="little_title">开发者名单(排名不分先后)</h2>
-            <p class="text">程序：陈梦远航</p>
-            <p class="text">网页：€</p>
-            <p class="text">内测：Fang；★★☆☆☆；犹豫；(｡•̀ᴗ-)✧</p>
-            <p class="text">其他：曰宣；释怀；小燕子；.</p>
+    </section>
+
+    <!-- 下载区 (仅保留用户指定的四个链接) -->
+    <section id="download" class="section">
+        <div class="container">
+            <div class="download-section">
+                <h2 class="download-title gold-text">立即获得「高博之基」</h2>
+                <p style="max-width: 600px; margin: 0 auto 2rem; color: #aaa;">内含完整剧情、角色数据、小怪配置、地图切换。选择以下方式获取游戏：</p>
+
+                <!-- 用户指定的下载链接区块 (part) -->
+                <div class="part">
+                    <a class="download" href="https://pan.baidu.com/s/1di4YdZEYC3LR3LnpZbGCJQ?pwd=gbzj" target="_blank">百度网盘下载</a>
+                    <a class="download" href="https://www.123865.com/s/ijYBvd-TQfHd" target="_blank">123云盘下载</a>
+                    <a class="download" href="https://40code.com/#page=work&amp;id=16020" target="_blank">快捷游玩</a>
+                    <a class="download" href="gxrz.html">更新日志</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新增：反馈与开发者名单 -->
+    <div class="container">
+        <div class="feedback-container">
+            <!-- 反馈区域 -->
+            <div class="part">
+                <p class="text">反馈网址(请用手机打开)：
+                    <a class="upload" href="https://tjzssl.tsxcx.xyz/?tsd=698fd574e5659700011e28ea&amp;tsid=57485667&amp;tsuid=50431965" target="_blank">
+                        https://tjzssl.tsxcx.xyz/?tsd=698fd574e5659700011e28ea&amp;tsid=57485667&amp;tsuid=50431965
+                    </a>
+                </p>
+                <img src="反馈.jpg" alt="反馈二维码" style="width: 20%; height: auto; display: block; margin: 0 auto;">
+                <p class="text">反馈邮箱：C20100605@outlook.com</p>
+            </div>
+            <!-- 开发者名单 -->
+            <div class="part">
+                <h2 class="little_title">开发者名单(排名不分先后)</h2>
+                <p class="text">程序：陈梦远航</p>
+                <p class="text">网页：€</p>
+                <p class="text">内测：Fang；★★☆☆☆；犹豫；(｡•̀ᴗ-)✧</p>
+                <p class="text">其他：曰宣；释怀；小燕子；.</p>
+            </div>
         </div>
     </div>
 
-</body></html>
+    <footer>
+        <div class="container">
+            <p>高博之基 基于TurboWarp构建</p>
+            <p style="margin-top: 0.5rem;">欢迎下载</p>
+            <p><a href="#">回到顶部</a></p>
+            <!-- 新增返回老版官网链接 -->
+            <p class="back-link"><a href="lao.html">返回老版官网</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单交互
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const closeBtn = document.querySelector('.mobile-nav .close-btn');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openMenu() {
+            mobileNav.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            mobileNav.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                closeMenu();
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
